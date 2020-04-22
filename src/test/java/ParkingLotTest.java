@@ -1,4 +1,5 @@
 import exception.ParkingLotException;
+import observer.AirportSecurity;
 import observer.Owner;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,6 +11,7 @@ public class ParkingLotTest {
     ParkingLotMain parkingLotMain = null;
     VehiclesPojo vehicle = null;
     Owner owner = null;
+    AirportSecurity security = null;
 
 
     @Before
@@ -17,6 +19,7 @@ public class ParkingLotTest {
         vehicle = null;
         parkingLotMain = new ParkingLotMain();
         owner = new Owner();
+        security = new AirportSecurity();
     }
 
     @Test
@@ -77,6 +80,27 @@ public class ParkingLotTest {
             vehicle.setVehicleNumber("48");
             parkingLotMain.parkVehicle(vehicle);
             Assert.assertEquals("Full Lot 1", owner.getParkingSlotFullOrNot());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenParkingLotIsFull_WhenInformAirportSecurity_ThenReturnTrue() {
+        try {
+            parkingLotMain.addObserver(security);
+            VehiclesPojo vehicle1 = new VehiclesPojo();
+            vehicle1.setVehicleName("abc");
+            vehicle1.setVehicleNumber("45");
+            parkingLotMain.parkVehicle(vehicle1);
+            VehiclesPojo vehicle2 = new VehiclesPojo();
+            vehicle2.setVehicleName("abc");
+            vehicle2.setVehicleNumber("47");
+            parkingLotMain.parkVehicle(vehicle2);
+            vehicle.setVehicleName("abc");
+            vehicle.setVehicleNumber("48");
+            parkingLotMain.parkVehicle(vehicle);
+            Assert.assertEquals("Full Lot 1", security.getParkingSlotFullOrNot());
         } catch (Exception e) {
             e.printStackTrace();
         }
