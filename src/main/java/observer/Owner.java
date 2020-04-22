@@ -10,12 +10,10 @@ public class Owner implements Observer {
 
     }
 
-    // setter method
     public void setParkingSlotFullOrNot(String parkingSlotFullOrNot) {
         this.parkingSlotFullOrNot = parkingSlotFullOrNot;
     }
 
-    // getter method
     public String getParkingSlotFullOrNot() {
         return parkingSlotFullOrNot;
     }

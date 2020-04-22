@@ -66,14 +66,17 @@ public class ParkingLotTest {
         try {
             parkingLotMain.addObserver(owner);
             VehiclesPojo vehicle1 = new VehiclesPojo();
-            vehicle1.setVehicleName("abc");vehicle1.setVehicleNumber("45");
+            vehicle1.setVehicleName("abc");
+            vehicle1.setVehicleNumber("45");
             parkingLotMain.parkVehicle(vehicle1);
             VehiclesPojo vehicle2 = new VehiclesPojo();
-            vehicle2.setVehicleName("abc");vehicle2.setVehicleNumber("47");
+            vehicle2.setVehicleName("abc");
+            vehicle2.setVehicleNumber("47");
             parkingLotMain.parkVehicle(vehicle2);
-            vehicle.setVehicleName("abc");vehicle.setVehicleNumber("48");
+            vehicle.setVehicleName("abc");
+            vehicle.setVehicleNumber("48");
             parkingLotMain.parkVehicle(vehicle);
-            Assert.assertEquals("Full Lot 1",owner.getParkingSlotFullOrNot());
+            Assert.assertEquals("Full Lot 1", owner.getParkingSlotFullOrNot());
         } catch (Exception e) {
             e.printStackTrace();
         }
